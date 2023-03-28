@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first_assignment</title>
+</head>
+<body>
+    <h3>first_assignment</h3>
+</body>
+</html>
+<script>
+// 과제1)주급계산하기 
+
+// 자바스크립트를 이용하여 주급을 계산하는 프로그램을 작성하세요 
+// 데이터는 직접 JSON 형태로 입력해야 합니다. 
+// 입력데이터는 이름과 근무시간 시간당 급여액입니다. 
+// 다음 데이터를 JSON 형태로 저장하고 주급을 계산하여 출력하는 코딩을 작성하세요 
+// 참고코드는 클론코드입니다. 
+
+// 입력데이터)
+// 홍길동  40 10000  
+// 임꺽정  15 20000
+// 장길산  20 20000
+// 강감찬  30 15000
+// 이순신  40 30000
+
+// 출력결과
+
+// 이름 : 홍길동  근무시간 : 40  시간당급여액 : 10000  총액 : 400000
+// 이름 : 임꺽정  근무시간 : 15  시간당급여액 : 20000  총액 : 300000
+// 이름 : 장길산  근무시간 : 20  시간당급여액 : 20000  총액 : 400000
+// 이름 : 강감찬  근무시간 : 30  시간당급여액 : 15000  총액 : 450000
+// 이름 : 이순신  근무시간 : 40  시간당급여액 : 30000  총액 : 1200000
+
+let weeklyCalc=[
+        {name:"홍길동", dutyHours:40, hourlyPay:10000, weeklyPay:0},
+        {name:"임꺽정", dutyHours:15, hourlyPay:20000, weeklyPay:0},
+        {name:"장길산", dutyHours:20, hourlyPay:20000, weeklyPay:0},
+        {name:"강감찬", dutyHours:30, hourlyPay:15000, weeklyPay:0},
+        {name:"이순신", dutyHours:40, hourlyPay:30000, weeklyPay:0}
+    ]
+
+for (wage of weeklyCalc) {
+    wage["weeklyPay"] = wage["dutyHours"] * wage["hourlyPay"];
+}
+
+for (wage of weeklyCalc){
+    console.log(`이름: ${wage["name"]}, 근무시간: ${wage["dutyHours"]}, 시간당급여액: ${wage["hourlyPay"]}, 총액: ${wage["weeklyPay"]}`);
+}
+
+</script>
