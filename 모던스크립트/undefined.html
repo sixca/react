@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>undefined</h3>
+   
+</body>
+</html>
+<script>
+
+    //자바스크립트에서 null은 ? 변수를 초기화해서 아무 값도 없이 하려면 null을 씀
+    let x = null;
+    let y = undefined;
+    let z;
+
+    console.log(x);
+    console.log(y);
+    console.log(z); // 아무것도 할당하지 않았을 때는 null이 아닌 undefined
+
+    console.log(document.getElementById("result")); 
+    // 없는 값을 불렀을 때? 크롬에선 null이 나오네. 브라우저마다 다르기도..
+    
+   // console.log(document.getElementById("result").innerHTML);  //null로 인식되어 innerHTML이 오류뜸
+
+   //연산자 : typeof x , 함수 : typeof(x) 괄호가 있든 없든 결과는 동일함
+    console.log(typeof undefined);
+    console.log(typeof 0);
+    console.log(typeof Math);
+    console.log(typeof alert);
+    console.log(typeof "foo");
+    // 값의 타입확인
+
+    //함수를 잘 이해해야 객체지향을 잘 한다
+    // 내장함수, 사용자정의 함수
+    // alert함수  :: 사용자가 확인 버튼을 누를 때 까지 메시지를 보여주는 모달창 띄우기
+    // alert("hello java");
+
+    // prompt 함수 :: 텍스트메시지+input field+확인/취소 버튼이 있는 모달창을 띄워줌
+    //result = prompt('이름을 입력하세요', '홍길동');
+    // (사용자에게 보여줄 문자열, 초깃값(선택))
+    //result = prompt('그뭐냐', undefined);
+
+
+
+
+</script>

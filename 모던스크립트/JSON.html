@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>객체(JSON)</h3>
+</body>
+</html>
+<script>
+    let person={"name":"홍길동", age:23, phone:"010-1234-5678", kor:90, eng:80, mat:60};
+    // 중괄호로 객체(프로퍼티) 여러 개를 가져오는 JSON.
+    // key : value 로 구성. 키값은 따옴표가 있든 없든 상관없음. 주는게 안정적임
+
+    //프로퍼티를 호출하는 2가지 방법
+    console.log(person.name, person.age, person.phone);
+    console.log(person.kor, person.eng, person.mat);
+    console.log(person["name"], person["age"], person["phone"]);
+
+    //추가하기
+    person.total = person.kor + person.eng + person.mat;
+    person.avg = person.total/3;
+
+    console.log(`${person.name}의 총점은 ${person.total}, 평균은 ${person.avg}입니다`);
+    console.log(person);
+
+   
+
+</script>
