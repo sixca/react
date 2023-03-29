@@ -28,10 +28,10 @@
     일주일 근무시간 :  <input type ="text" name="workTime" id="workTime"><br/>
     시간당 급여액 :  <input type ="text" name="hourlyPay" id="hourlyPay"><br/>
 
-    <button type="button" onclick="calcPay()">주급계산기</button>&nbsp;
+    <button type="button" onclick="calcPay()">주급계산기</button>
     <button type="button" onclick="calcClear()">새로입력</button><br/>
-    <!-- result : <span id="result"></span> -->
-    <div id="result1"></div>
+    result : <span id="temp"></span>
+    <!-- <div id="temp"></div> -->
 
 </body>
 </html>
@@ -50,20 +50,21 @@
         name = document.getElementById("name").value;
         workTime = document.getElementById("workTime").value;
         hourlyPay = document.getElementById("hourlyPay").value;
-        workTime = parseInt(worktime);
-        hourlyPay = parseInt(perpay);
+        workTime = parseInt(workTime);
+        hourlyPay = parseInt(hourlyPay);
 
         //2.계산
-        payBased = worktime * hourlyPay;
+        payBased = 20 * hourlyPay;
         payAdded = 0;
         if(workTime > 20)
         {
             payAdded = (workTime-20)*hourlyPay/2;
         }
+        total = payBased + payAdded;
 
         //3.출력
-        temp = `${name}의 기본급은 ${payBased}이고, 추가수당은 ${payAdded}이며, 총액은 ${payBased + payAdded}입니다.`
-        document.getElementById("result1").innerHTML = temp;
+        temp = `${name}의 기본급은 ${payBased}이고, 추가수당은 ${payAdded}이며, 총액은 ${total}입니다.`;
+        document.getElementById("temp").innerHTML=temp;
 
         // payBased = parseInt(p) * 20
         // payAdded = (parseInt(h)-20)*(parseInt(h)*0.5);
