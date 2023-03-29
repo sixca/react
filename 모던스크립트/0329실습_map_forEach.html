@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>총점 평균을 람다로 써서 구해보세요. forEach?</h3>
+</body>
+</html>
+<script>
+
+    //내 실습
+    let weeklyCalc=[
+        {name:"홍길동", dutyHours:40, hourlyPay:10000, weeklyPay:0},
+        {name:"임꺽정", dutyHours:15, hourlyPay:20000, weeklyPay:0},
+        {name:"장길산", dutyHours:20, hourlyPay:20000, weeklyPay:0},
+        {name:"강감찬", dutyHours:30, hourlyPay:15000, weeklyPay:0},
+        {name:"이순신", dutyHours:40, hourlyPay:30000, weeklyPay:0}
+    ]
+
+    let r = weeklyCalc.map((r)=>{
+        r.total = r.dutyHours * r.hourlyPay;
+        r.avg = r.total/5;
+        return r;
+    })
+
+    weeklyCalc.forEach( (e) => {
+    console.log(`name: ${e.name}, 근무시간: ${e.dutyHours}, 시급: ${e.hourlyPay}, 총시급: ${e.total}, 평균시급: ${e.avg}`);
+   });
+
+   //강사님 실습
+   let s = [
+    {name:"홍길동", kor:80, eng:85, mat: 75},
+    {name:"김희찬", kor:60, eng:75, mat: 95},
+    {name:"박찬우", kor:50, eng:90, mat: 90},
+    {name:"류원경", kor:90, eng:88, mat: 75},
+    {name:"이재진", kor:100, eng:83, mat: 85}
+   ];
+
+   //총점, 평균
+   s.map((item)=>{
+    item.total = item.kor + item.mat + item.eng;
+    item.avg = item.total/5;
+    return item;
+   }).forEach(item=>{
+    console.log(`${item.name} ${item.total} ${item.avg}`);
+   });
+
+</script>

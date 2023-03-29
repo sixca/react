@@ -24,6 +24,10 @@
    console.log("객체의 개수 : ", students.length);
    console.log(students[0].name, students[0].kor, students[0].eng, students[0].mat);
 
+    for(i=0; i<students.length; i++) {
+        students[i].total = students[i].kor + students[i].eng + students[i].mat;
+    }
+
    for(i=0; i<students.length; i++){
     console.log(students[i].name, students[i].kor, students[i].eng, students[i].mat);
    }
@@ -48,6 +52,5 @@
     console.log(`${e.name} ${e.total}`);
    });
 
-   
 
 </script>

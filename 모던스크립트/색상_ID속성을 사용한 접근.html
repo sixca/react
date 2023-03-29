@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID속성을 사용한 접근</title>
+</head>
+<body>
+    <h1 id="title1">제목줄1</h1>
+    <h1 id="title2">제목줄2</h1>
+    <h1 id="title3">제목줄3</h1>
+</body>
+</html>
+
+<script>
+    document.getElementById('title1').innerHTML="첫번째 제목";
+    document.getElementById('title2').innerHTML="두번째 제목";
+    document.getElementById('title3').innerHTML="세번째 제목";
+
+    // let ids = ["title1", "title2"];
+    // for(i=0; i<ids.length; i++)
+    //     document.getElementById(ids[i]).style.color="#ff0000";
+
+    //forEach구문으로 표현해봅니다
+    const ids = ["title1", "title2"];
+    ids.forEach(id => {
+    document.getElementById(id).style.color = "#ff0000";
+    });
+
+    // 색을 다루는 방법
+    // #FF0000처럼 16진수(0~F)로 된 6자리 코드표를 사용해 색을 표현합니다(or 8자리)
+    // 16진수 표기법을 사용했을 때 사용가능한 색상은 #000000 ~ #FFFFFF까지 총 16,777,216가지의 색상이 표현 
+    // color: #FF00000은 color: rgb(255, 0, 0)으로 대체할 수도 있습니다.
+    // color: red라고 표현할 수도 있습니다.
+    // #뒤에 R(Red), G(Green), B(Blue), A(Alpah)   
+</script>

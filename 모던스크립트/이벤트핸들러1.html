@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트핸들러</title>
+</head>
+<body>
+    <button type="button" onclick="goDisplay()">함수선언식</button><br/>
+    <button type="button" id="btnPress">함수표현식</button><br/>
+    <button type="button" id="btnPress2">화살표함수</button><br/>
+    <!-- 
+        <input type="submit">  무조건 서버로 정보를 전송
+        <button>누르세요</button>
+        --각각 동일한 출력, 아래 케이스를 대부분 실무에서 사용
+        <input type="button">  이벤트만 발생시킨다
+        <button type="button">누르세요</button>
+
+        onclick, onDoubleClick, mouseover, mouseout
+    -->
+    
+    <!-- 그래서 콜백함수를 내 맘대로 정의 못합니다 -->
+    
+</body>
+</html>
+<script>
+    //함수선언
+    function goDisplay() {
+        alert("button 눌림")
+    }
+
+    //초창기에는  script를 헤더에 놓았음
+    //버튼 객체 있는데 나중에 함수를 붙인다. addEventListener로..
+    window.onload=function(){  //초기작업:: 모든 문서가 로딩된 이후에 실행되도록 하는 함수. 전통적으로 이렇게 함..
+        document.getElementById("btnPress").addEventListener('click', function(){
+                alert("두번째 버튼");
+        })
+        document.getElementById("btnPress2").addEventListener('click',
+         ()=>{                                   // 화살표함수 표현
+                alert("세번째 버튼");
+        })
+    };
+
+</script>

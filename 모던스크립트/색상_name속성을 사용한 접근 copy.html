@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>name속성을 사용한 접근</title>
+</head>
+<body>
+    <input type="text" name="number" value="10"><br/>
+    <input type="text" name="number" value="20"><br/>
+    <input type="text" name="number" value="30"><br/>
+    <input type="text" name="number" value="40"><br/>
+    <input type="text" name="number" value="50"><br/>
+    <input type="text" name="number" value="0"><br/>
+</body>
+</html>
+
+<script>
+    //input 태그류는  name속성을 갖고, 서버로 값을 전달할 때 name속성을 사용함
+
+    let numbers = document.getElementsByName("number");
+    let result = document.getElementsByName("result");
+    //실제로 같은 이름의 태그가 있는 지는 중요하지 않다.
+    //name속성은 무조건 배열로 읽어온다
+    let sum=0;
+    numbers.forEach((n)=>{
+        sum += parseInt(n.value);
+    });
+    result[0].value = sum;
+
+</script>
