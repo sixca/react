@@ -13,6 +13,8 @@
     <input type="text" name="number" value="40"><br/>
     <input type="text" name="number" value="50"><br/>
     <input type="text" name="number" value="0"><br/>
+
+    <input type="text" name="result" value=""><br />
 </body>
 </html>
 
@@ -20,13 +22,13 @@
     //input 태그류는  name속성을 갖고, 서버로 값을 전달할 때 name속성을 사용함
 
     let numbers = document.getElementsByName("number");
-    let result = document.getElementsByName("result");
+    let results = document.getElementsByName("result");
     //실제로 같은 이름의 태그가 있는 지는 중요하지 않다.
-    //name속성은 무조건 배열로 읽어온다
+    //name속성은 무조건 '배열'로 읽어온다
     let sum=0;
     numbers.forEach((n)=>{
         sum += parseInt(n.value);
     });
-    result[0].value = sum;
+    results[0].value = "합계 :" + sum; //name은 value가 1개라도 배열로 읽어오니 '배열'로 호출
 
 </script>

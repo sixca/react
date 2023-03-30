@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <p>여기를 눌러보세요</p>    
+    <p id="test1">여기 내용을 바꿔보자</p>
+</body>
+</html>
+<script>
+    //$(function(){}) 또는 $(()=>) 로 문법 구사.
+    $(document).ready(()=>{
+        $("p").click(()=>{
+            alert("눌림");
+        })
+        $("#test1").html("<h1>글자바꾸기</h1>");
+    })
+
+    //jQueryr 값 읽고 쓰기
+    //text : 선택된 요소의 값을 읽거나 쓸 수 있다
+    //html() : 선택된 요소의값을 읽거나 쓸 수 있다
+    //val() : input태그의 value 속성값을 읽고 쓸 수 있다
+
+    
+
+
+
+</script>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경색 바꾸기</title>
+</head>
+<body>
+    <button type="button" id="btn1" style="background-color: moccasin;" 
+    onclick="chgBack(this)">배경색</button>
+    <button type="button" id="btn2" style="background-color: rgb(184, 121, 12);" 
+    onclick="chgBack(this)">배경색</button>
+    <button type="button" id="btn3" style="background-color: rgb(90, 63, 18);" 
+    onclick="chgBack(this)">배경색</button>
+    <button type="button" id="btn4" style="background-color: rgb(50, 37, 15);" 
+    onclick="chgBack(this)">배경색</button>
+    <button type="button" id="btn5" style="background-color: rgb(47, 40, 30);" 
+    onclick="chgBack(this)">배경색</button>
+    <button type="button" id="btn6" style="background-color: rgb(177, 166, 235);" 
+    onclick="chgBack(this)">배경색</button>
+    <button type="button" id="btn7" style="background-color: rgba(133, 130, 219, 0.284);" 
+    onclick="chgBack(this)">배경색</button>
+</body>
+</html>
+<script>
+    function chgBack(me){
+        //자바스크립트가 제공하는 내장객체, 발생한 이벤트에 대한 모든 정보를 갖고 있다.
+        console.log(event.target.id); // ??  콜솔도 조회 안 되는데.. 쓸일많다고 하심.
+       
+        body = document.getElementsByTagName("body");
+        body[0].style.backgroundColor = me.style.backgroundColor;
+        //Tagname을 가져오기. 배열을 가져오니 배열로 출력하기.
+    }
+    
+</script>

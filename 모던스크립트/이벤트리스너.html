@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트리스너</title>
+</head>
+<body>
+    <h3>addEventListener</h3>
+    <h4>이벤트핸들러 - 새로운방식</h4>
+    <h4>여러 개의 함수 이벤트를 실행</h4>
+    <button type = "button" id="btnPress">누르세요</button>
+</body>
+</html>
+<script>
+    //addEventListener를 호출하고 (이벤트, 이벤트 시 호출할 함수)를 연결
+    //onclick은 하나의 함수만 가능하지만 addEventListener는 여러 개의 함수를 체인형태로 연결 가능
+    //p131 처럼 다르게 사용하기도..
+    window.onload=()=>{  //window.onload이벤트는 웹페이지가 모두 메모리에 load된 뒤에 발생. 웹페이지 로드 직 후 할 일을 처리하는 이벤트
+        button = document.getElementById("btnPress");
+        button.addEventListener("click", ()=>{
+            alert("fitst function");
+        });
+        button.addEventListener("click", ()=>{
+            alert("second function");
+        });
+        button.addEventListener("click", ()=>{
+            alert("third function");
+        });
+    }
+</script>

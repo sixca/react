@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 실습.html 주급계산기를 jQuery로 변경 -->
+    <h3>주급 계산기</h3>
+    이름: <input type="text" name="name" id="name"><br/>
+    주간 근무시간: <input type="text" name="workTime" id="workTime"><br/>
+    시급: <input type="text" name="hourlyPay" id="hourlyPay"><br/>
+    <button type="button" id="payCalc">주급 계산</button>
+    <button type="button" id="btnClear">새로 입력</button><br/>
+    result: <span id="result"></span>
+
+</body>
+</html>
+<script>
+    $(document).ready(()=>{
+        $("#payCalc").click(()=>{
+            name = $("#name").val();
+            hourlyPay = parseInt($("#hourlyPay").val());
+            workTime = parseInt($("#workTime").val());
+
+            payBased = 0;
+            if(workTime > 20){
+                payBased = hourlyPay*20;
+            }else {
+                payBased = hourlyPay*worktime;
+            }
+
+            payAdded = 0;
+            if(workTime > 20){
+                payAdded = (workTime - 20) * hourlyPay*0.5;
+            }else{
+                payAdded = 0;
+            }   
+        
+            total = payBased + payAdded;
+
+           $("#result").html(`${name}님의 기본급은 ${payBased}원이고, 추가수당은 ${payAdded}원, 합계 ${total}원입니다`);
+        });
+
+        $("#btnClear").click(()=>{
+            $("input").val("");
+            // input = document.getElementsByTagName("input");
+            // for(i=0; i<input.length; i++){
+            //     input[i].value="";
+            // }
+        });
+
+    });
+
+</script>
