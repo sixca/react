@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -75,4 +76,83 @@
         document.getElementById("result").innerHTML = "";
     }
 
+=======
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+</head>
+<body>
+    <h3>사각형 계산기</h3>
+    가로: <input type="text" name="xValue" id="xValue"><br/>
+    세로: <input type="text" name="yValue" id="yValue"><br/>
+    <button type="button" onclick="recCalc()">면적 계산</button>
+    <button type="button" onclick="clearInput()">새로 입력</button><br/>
+    result: <span id="surface"></span><br/>
+
+    <h3>주급 계산기</h3>
+    이름: <input type="text" name="name" id="name"><br/>
+    주간 근무시간: <input type="text" name="workTime" id="workTime"><br/>
+    시급: <input type="text" name="hourlyPay" id="hourlyPay"><br/>
+    <button type="button" onclick="payCalc()">주급 계산</button>
+    <button type="button" onclick="clearCalc()">새로 입력</button><br/>
+    result: <span id="result"></span>
+</body>
+</html>
+<script>
+
+    function recCalc(){
+        x = document.getElementById("xValue").value;
+        y = document.getElementById("yValue").value;
+        surface = parseInt(x) * parseInt(y);
+        document.getElementById("surface").innerHTML = surface;
+    };
+
+    function clearInput(){
+        document.getElementById("xValue").value = "";
+        document.getElementById("yValue").value = "";
+        document.getElementById("surface").innerHTML = "";
+    }
+
+    function payCalc (){
+        //값 명시해주고
+        name = document.getElementById("name").value;
+        hourlyPay = document.getElementById("hourlyPay").value;
+        workTime = document.getElementById("workTime").value;
+        hourlyPay = parseInt(hourlyPay);
+        worktime = parseInt(workTime);
+        
+        //연산합니다
+        payBased = 0;
+        if(workTime > 20){
+            payBased = hourlyPay*20;
+        }else {
+            payBased = hourlyPay*worktime;
+        }
+
+        payAdded = 0;
+        if(workTime > 20){
+            payAdded = (workTime - 20) * hourlyPay*0.5;
+        }else{
+            payAdded = 0;
+        }   
+        
+        total = payBased + payAdded;
+
+        //출력합니다
+        document.getElementById("result").innerHTML
+        = `${name}님의 기본급은 ${payBased}원이고, 추가수당은 ${payAdded}원, 합계 ${total}원입니다`;
+    }
+
+    function clearCalc (){
+        document.getElementById("name").value = "";
+        document.getElementById("hourlyPay").value = "";
+        document.getElementById("workTime").value = "";
+        document.getElementById("result").innerHTML = "";
+    }
+
+>>>>>>> 2963f27b39cdf3b45bae59d7cae4d654e739517e
 </script>
