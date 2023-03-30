@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <!-- 실습.html 주급계산기를 jQuery로 변경 -->
+    <h3>성적 계산기</h3>
+    이름: <input type="text" id="name"><br/>
+    국어: <input type="text" id="ko"><br/>
+    영어: <input type="text" id="eng"><br/>
+    수학: <input type="text" id="mat"><br/>
+    <button type="button" id="calc">결과 확인</button><br/>
+    <button type="button" id="clearCalc">새로 입력</button><br/>
+    result: <div id="result"></div>
+
+</body>
+</html>
+<script>
+    $(document).ready(()=>{
+        $("#calc").click(()=>{
+            name = $("#name").val();
+            ko = parseInt($("#ko").val());
+            eng = parseInt($("#eng").val());
+            mat = parseInt($("#mat").val());
+            if(0 > ko || ko > 100){
+                alert("점수를 0~100사이 숫자로 입력하세요");
+                return false;
+             } else if (0 > eng || eng > 100){
+                alert("점수를 0~100사이 숫자로 입력하세요");
+                return false;
+               } else if (0 > mat || mat > 100){
+                alert("점수를 0~100사이 숫자로 입력하세요");
+                return false;
+            } else {
+            total = ko + eng + mat;
+            avg = (ko + eng + mat)/3;
+            }
+           $("#result").html(`${name}님의 총점은 ${total}점이고 평균은 ${avg}점입니다`);
+        });
+
+        $("#clearCalc").click(()=>{
+            $("input").val("");
+        });
+    });
+
+</script>
