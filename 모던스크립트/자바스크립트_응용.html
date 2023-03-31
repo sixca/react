@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자바스크립트 응용편_Udemy by winterLoad</title>
+    <link rel="icon" type="image/png" href="http://example.com/myicon.png">
+</head>
+<body>
+  <h3>자바스크립트 응용편_Udemy by winterLoad</h3>  
+</body>
+</html>
+<script>
+
+
+    //1. truthy & falsy의 개념을 이해하고, 광역 예외처리에 활용해보자
+    let a = "";
+    if(a){
+        console.log("TRUE")
+    }else{
+        console.log("FALSE")
+    } //FALSE
+
+    let b = "string";
+    if(b){
+        console.log("TRUE")
+    }else{
+        console.log("FALSE")
+    } //TRUE
+    //불리언 값이 아니라도 참/거짓으로 평가하는 값들이 있음
+    //숫자, 문자, 빈배열, infinity = 참 같은 값으로 봄
+    //null, undefined, 숫자0, -0, NaN, 빈문자열"" = 거짓 같은 값으로 봄
+
+    const getName = (person) => {
+        return person.name;
+    }
+
+    let person = {name: "이정환"};
+    const name = getName(person);
+    console.log(name);
+    //이렇게 하면 정상 출력되지만
+
+    // const getName1 = (person1) => {
+    //     return person1.name;
+    // }
+    // let person1;
+    // const name1 = getName1(person1);
+    // console.log(name);
+    //undefined는 객체가 아니라서 내부 프로퍼티X
+    //null도 마찮가지 오류가 뜬다.
+    //둘다 제껴주기 위한 if(name === null || name === undefined)를 활용해도 되지만
+    //수많은 변수를 다 예외처리해줄 수 없으니 할 수 있는 방법
+
+    const getName2 = (person2) => {
+        if(!person2){
+            //false not => true가 되는 성질을 활용해서 아닌 경우 모두 "객체가 아닙니다"로 걸러지도록 예외처리!
+            return "객체가 아닙니다";
+        }
+        return person2.name2;
+    };
+    let person2 = null;
+    const name2 = getName2(person2);
+    console.log(name2);
+    //"객체가 아닙니다"
+
+
+    //2.삼항 연산자
+    //주어진 숫자가 양수인지 음수인지 확인하는 조건식
+    let c = 3;
+    if(c >= 0){
+        console.log("양수");
+    }else{
+        console.log("음수");
+    }
+    //삼항연산자로 한줄로 표현해보자
+    c >= 0 ? console.log("양수") : console.log("음수");
+    //참이면 A : 아니면 B
+
+    //주어진 배열이 비어있는지 확인하고, 빈배열인지 비어있지 않은 배열인지 확인
+    let d = [];
+    d.length === 0 ? console.log("빈배열") : console.log("값이 있는 배열");
+
+    //값을 참일 때, 거짓일 때를 구분해서 반환
+    let e = [1,23];
+    const arrayStatus = e.length === 0 ? "빈배열" : "값이 있는 배열";
+    //삼항연산자의 결과값을 arrayStatus에 담고
+    console.log(arrayStatus); // 대입연산자를 활용해서 값으로 받아볼 수도 있음
+
+    //좀 더 스마트하게 삼항연산자를 써봅시다. truthy, falsy 활용
+    let f;
+    const result = f ? true : false;
+    console.log(result); // false (비어있으니 undefined로 falsy하게 취급되겠죠)
+    let g = [];
+    const result1 = g ? true : false;
+    console.log(result1); // true (truthy한 값인 빈배열은 true로 취급)
+
+    //삼항연산자의 중첩 :: 이런 경우는 if로 쓰는게 가독성이 더 좋다네
+    //학점 계산 프로그램 :: 90점 이상 A+, 50점 이상 B+, 둘다 아니면 F
+    let score = 100;
+    //삼항연산자 활용
+    score >= 90 ? console.log("A+") : score >= 50 ? console.log("B+") : console.log("F");
+    //if문 활용
+    if(score >= 90) {
+        console.log("A+");
+    }else if (score >= 50) {
+        console.log("B+")
+    }else {
+        console.log("F")
+    }
+
+
+    //3. 단락 회로 평가 :: 논리연산자를 활용(&&, ||, !)
+    console.log(false && true); // false
+    console.log(true || false); // true
+    console.log(!true); // false
+    // 참거짓 평가 기능을 넘어서, truthy와 falsy를 활용하면 더 멋있게 쓸 수 있음. 응용!
+    const getName3 = (person3) => {
+        const name3 = person3 && person3.name; //undefined는 falsy한 값이기 때문에 falsy로 name3에 저장이 되고
+        return name3 || "객체가 아닙니다"; //falsy한 name3지만 "객체가 아닙니다"는 truthy하게 인정되어 "객체가 아닙니다" 값이출력됨. 허허; 그렇구나는 되는데 바로 와닿진 않음.
+    };
+
+    let person3;
+    const name3 = getName3(person3);
+    console.log(name3);
+
+    //4. 조건문 Upgrade
+    function isKoreanFood(food){
+        if(food === "불고기" || food === "비빔밥" || food ==="떡볶이"){
+            return true;
+        }
+        return false;
+    }
+    const food1 = isKoreanFood("불고기");
+    const food2 = isKoreanFood("파스타");
+    console.log(food1); //true
+    console.log(food2); //false
+    //존재하는 모든 한식을 검토하긴 너무 길어지겠죠
+    //여러 한식 문자열 중에 입력받은 매개변수가 존재하는지 않하는지만 확인하면 됨
+    //배열에 존재하는지 않하는지 걸러내는 조건문
+    function isKoreanFood1(food){
+        if(["불고기", "비빔밥", "떡볶이"].includes(food)){ //includes내장메서드를 활용. 앞 배열안에 존재하면 true/존재하지 않으면 false
+            return true;
+        }
+        return false;
+    }
+    const food3 = isKoreanFood1("불고기");
+    const food4 = isKoreanFood1("파스타");
+    console.log(food3); //true
+    console.log(food4); //false
+
+    //한식, 중식, 일식인지 받은 후 각각의 대표메뉴를 리턴해보자
+    const getMeal = (mealType)=>{
+        if(mealType==="한식") return "불고기";
+        if(mealType==="양식") return "파스타";
+        if(mealType==="일식") return "초밥";
+        if(mealType==="중식") return "짜장면";
+        return "굶기";
+    };
+    console.log(getMeal("한식"));
+    console.log(getMeal("중식"));
+    console.log(getMeal("인도식")); // 굶기
+    //너무 많아지면 이렇게 표현하기 힘들죠
+    //객체의 프로퍼티에 접근하면 괄호표현법을 활용해서 혁신적으로 접근 가능
+    const meal = {
+        한식 : "불고기",
+        중식 : "짜장면",
+        양식 : "파스타",
+        일식 : "초밥",
+        인도식 : "카레"
+    };
+
+    const getMeal1 = (mealType) => {
+        return meal[mealType] || "굶기";
+    };
+    console.log(getMeal1("인도식")); //카레
+    console.log(getMeal1("엄마식")); //굶기
+    // meal이라는 객체에서 "인도식"이라는 key를 갖는 프로퍼티를 가져온다
+
+
+    //추가 스터디 for in문과 for of문의 차이
+    //for in문 :: 해당 객체의 모든 '열거'할 수 있는 프로퍼티(enumerable properties)를 순회
+    var obj = {
+      name : "이순신",
+      age : 20
+    };
+    for (var i in obj) {
+      console.log(i + ":" + obj[i]);
+    } //i는 key, obj[i]는 프로퍼티
+    //for of문 :: '반복'할 수 있는 객체(iterable objects)를 순회 :: Array, Map, Set, arguments 등이 있음
+    var arr = new Set([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5]);
+    for (var value of arr) {
+      console.log(value);
+    } //1,2,3,4,5
+
+</script>

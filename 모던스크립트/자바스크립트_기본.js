@@ -87,7 +87,7 @@ const newArr = arr111.map((elm) =>{
     return elm * 2;
 });
 console.log(newArr);
-//원본배열에 모든 요소를 순회하며 어떤 연산을 적용한 리턴 값들로 새로운 배열로 출력
+//원본배열에 모든 요소를 순회하며 어떤 '연산'을 적용한 리턴 값들로 새로운 배열로 출력
 
 //배열에 값이 있는지 없는지 알아보기
 let number = 3;
@@ -135,7 +135,7 @@ const elm1 = arr1111.find((elm)=>{
 console.log(elm1);
 
 //filter :: 배열을 필터링 해봅시다 
-//배열에서 특정조건을 만족하는 요소들을 배열로 반환받고 싶다
+//배열에서 '특정조건'을 만족하는 요소들을 배열로 반환받고 싶다
 const arr2 = [
     {name:1, color: "red"},
     {name:2, color: "black"},

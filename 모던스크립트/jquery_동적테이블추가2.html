@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동적 테이블 추가2.html을 jQuery로 변경</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- input 입력값으로 테이블 요소 추가하기 -->
+</head>
+<body>
+    <button type="button" id="btnAdd">추가</button>&nbsp;&nbsp;
+    <button type="button" id="btnDel">삭제</button><br/>
+
+    <table id="mytable" style="width:80%; margin:auto; text-align: center; border:blue 1px solid">      
+        <colgroup>
+            <col style="width:33%">
+            <col style="width:33%">
+            <col style="width:33%">
+        </colgroup>
+        <thead>
+            <th>품목</th>
+            <th>수량</th>
+            <th>단가</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" name="product_name"></td>
+                <td><input type="text" name="product_count"></td>
+                <td><input type="text" name="product_price"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+<script>
+
+    //
+    $(document).ready(()=>{
+        // $("#btnAdd").click(()=>{
+        //     let temp = "<tr>";
+        //     temp +="<td><input type='text' name='product_name'></td>";
+        //     temp +="<td><input type='text' name='product_count'></td>";
+        //     temp +="<td><input type='text' name='product_price'></td>";
+        //     temp +="</tr>";
+        //     $("#mytable > tbody:last").append(temp);
+        // })
+        
+        //백틱으로하면 더 편한데, jQuery에서 잘 안 먹힘
+        $("#btnAdd").click(()=>{
+            let temp = `<tr>
+                <td><input type='text' name='product_name'></td>
+                <td><input type='text' name='product_count'></td>
+                <td><input type='text' name='product_price'></td>
+            </tr>`;
+            $("#mytable > tbody:last").append(temp); //mytable 요소의 자식 중 마지막 tbody를 선택하다. 그곳에 temp를 덧붙힘.
+            // 부모A > 자식B = A의 자식인 B를 선택. 문법임..
+        });
+
+        $("#btnDel").click(()=>{
+            if($("#mytable > tbody > tr").length > 1 ){
+                $("#mytable > tbody > tr:last").remove();
+            }
+        });
+    })
+
+</script>

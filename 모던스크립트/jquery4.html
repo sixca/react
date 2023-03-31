@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text, hidden, checkbox</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+   <form action="">  
+        <input type="hidden" id="seq" name="seq"><br/>
+        이름: <input type = "text" id="username" name="username"><br/>
+        이름2: <input type = "text" id="username" name="username"><br/>
+        좋아하는 분야<br/>
+        <input type="checkbox" name="interest" value="1">자바<br/>
+        <input type="checkbox" name="interest" value="2">C<br/>
+        <input type="checkbox" name="interest" value="3">파이썬<br/>
+        <input type="checkbox" name="interest" value="4">빅데이터<br/>
+        <input type="checkbox" name="interest" value="5">c#.net<br/>
+        <input type="checkbox" name="interest" value="6">웹프로그래밍<br/>
+        <input type="checkbox" name="interest" value="7">php<br/>
+        <button type="button" id="btnSelectAll">전체 선택</button>&nbsp;
+        <button type="button" id="btnReleaseAll">전체 해제</button>&nbsp;
+
+        <button type="button" id="btnRead">데이터 읽기</button>
+   </form>
+</body>
+</html>
+<script>
+    $(document).ready(()=>{
+        //값 넣기
+        $("input[type=hidden][name=seq]").val("777");
+        $("input[type=text][name=username]").val("홍길동");
+
+        $("#seq").val("999");
+        $("#username").val("임꺽정");
+        $("input[type=checkbox][name=interest]").eq(1).prop("checked", true);
+        $("input[type=checkbox][name=interest]").eq(3).prop("checked", true);  //checkbox 체크. eq(1)는 1번 index 선택
+
+        $("#btnRead").click( ()=>{
+            console.log($("input[type=hidden][name=seq]").val() );
+            console.log($("input[type=text][name=username]").val() );
+
+            //선택한 항목 가져올 때는
+            let result = "";
+            //선택된 항목만 가져온다
+            $("input[type=checkbox][name=interest]:checked").each(function(){
+                //각자 객체가 전달된다.
+                result += $(this).val()+",";
+                //선택 안 된 체크박스는 값이 비어있음
+            });
+
+            alert(result); //모달창으로 띄워 결과보여줘
+        })
+
+        //체크박스 전체선택
+        $("#btnSelectAll").click(()=>{
+            $("input[type=checkbox][name=interest]").prop("checked", true);
+        })
+        //체크박스 전체해제
+        $("#btnReleaseAll").click(()=>{
+            $("input[type=checkbox][name=interest]").prop("checked", false);
+        })
+
+    })
+
+</script>
