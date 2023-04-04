@@ -1,6 +1,4 @@
 <!-- ejs 엔진이 ejs 파일을 뿌려줄겁니다 -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,8 +56,22 @@
                         <td><%=item.wdate%></td>
                     </tr>
                 <%}%>
+                <tr>
+                  <td colspan="2">
+                    <button type="button" id="btnWrite">글쓰기</button>
+                  </td>
+                </tr>
               </tbody>
             </table>
     </div>
 </body>
 </html>
+<script>
+  window.onload=()=>{
+    let btnWrite=document.getElementById("btnWrite");
+      btnWrite.addEventListener("click", ()=>{
+        window.location.href = "/board/write";
+    });
+  };
+
+</script>

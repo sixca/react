@@ -57,7 +57,7 @@
                 </tr>
                 <tr>
                   <td>내용</td>
-                  <td><input type="text" name="contents"></td>
+                  <td><textarea cols=80 row=5 name="contents"></textarea></td>
                 </tr>
                 <tr>
                   <td colspan="2">
@@ -70,15 +70,14 @@
     </div>
 </body>
 </html>
+
 <script>
   window.onload = () =>{
     let btnSave=document.getElementById("btnSave");
     btnSave.addEventListener("click", ()=>{
-      document.myform.method="post";  // 
-      document.myform.action="/board/save";  //
-      document.myform.submit();  // myform에 제출
+      document.myform.method="post";  // 메서드 속성 post로 설정
+      document.myform.action="/board/save";  // 전송될 서버쪽 URL 지정
+      document.myform.submit();  // myform이라는 폼데이터를 서버로 보내서 처리하겠다
     })
   }
-
-
 </script>
