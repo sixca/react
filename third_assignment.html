@@ -9,24 +9,30 @@
 <body>
     <h3>성적 계산기</h3>
     <form name="myform" action="/calc" method="get">
-        이름: <input type="text" name="name"><br/>
-        국어: <input type="text" name="ko"><br/>
-        영어: <input type="text" name="eng"><br/>
-        수학: <input type="text" name="mat"><br/>
+        이름: <input type="text" id="name" name="name"><br/>
+        국어: <input type="text" id="ko" name="ko"><br/>
+        영어: <input type="text" id="eng" name="eng"><br/>
+        수학: <input type="text" id="mat" name="mat"><br/>
         <button type="button" id="calc">결과 확인</button><br/>
         <button type="button" id="clearCalc">새로 입력</button><br/>
-        <!-- result: <div id="result"></div> -->
     </form>
 </body>
 </html>
 <script>
 window.onload=()=>{
         let calc = document.getElementById("calc");
-        //let clearCalc = document.getElementById("clearCalc");
+        let clearCalc = document.getElementById("clearCalc");
 
         calc.addEventListener("click", ()=>{
             document.forms[0].submit();
         });
+
+        clearCalc.addEventListener("click", ()=>{
+            document.getElementById("name").value = "";
+            document.getElementById("ko").value = "";
+            document.getElementById("eng").value = "";
+            document.getElementById("mat").value = "";
+        })
     };
 
 
