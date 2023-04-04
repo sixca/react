@@ -22,7 +22,7 @@ app.use("/board/list", (request, response)=>{
 
 app.use("/board/view/:id", (request, response)=>{
     let id = request.params.id;
-    item = boardList.filter(x=>x.id==id);
+    item = boardList.filter(x=>x.id==id); // 배열의 조건식
     response.render("board/board_view.ejs", {item:item[0]});
 });
 
@@ -37,8 +37,10 @@ app.use("/board/save", (request, response)=>{
     let contents = request.body.contents;
     let writer = request.body.writer;
     let id = boardList.length+1;
-    boardList.push({id:id, title:title, contents:contents, writer:writer});
-    response.redirect("/board/list"); //강제이동. 이런 방법으로 호출해야해요. 함수를 직접 호출하면 안 돼요. 
+    let now = new Date();
+    let wdate = now.toLocaleDateString('ko-KR');
+    boardList.push({id:id, title:title, contents:contents, writer:writer, wdate:wdate});
+    response.redirect("/board/list"); //응답을 이쪽으로 옮겨라! 강제이동. 이런 방법으로 호출해야해요. 함수를 직접 호출하면 안 돼요. 
 });
 //response.redirect() 함수는 HTTP 요청을 다른 URL로 리다이렉트하는 메서드
 //"/board/save" URL로 POST 요청이 왔을 때, boardList라는 배열에 새로운 게시물 정보를 추가하고, "/board/list" URL로 리다이렉트하는 기능을 수행
