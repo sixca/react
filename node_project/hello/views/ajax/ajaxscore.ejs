@@ -36,6 +36,7 @@
             })
             .fail((res, status, erro)=>{
                 console.log(status);     //json은 에러가 status에요
+                $("#result").val("점수를 0~100사이 숫자로 입력하세요");
             })
             //json 기본구조.
         })
