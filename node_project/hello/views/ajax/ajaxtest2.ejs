@@ -1,0 +1,44 @@
+<!-- 덧셈 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        x : <input type="text" name="x" id="x"><br/>
+        y : <input type="text" name="y" id="y"><br/>
+
+        result : <input type="text" name="result" id="result"><br/>
+
+        <button type="button" id="btnAdd">더하기</button>
+    </form>
+</body>
+</html>
+<script>
+
+    //jQuery를 사용하여 Ajax 요청을 보내고, 서버에서 JSON 형식으로 응답을 받아와 처리하는 예제
+    $(document).ready(()=>{
+        $("#btnAdd").click(()=>{
+            //비동기모드 = 반환값 x
+            $.ajax({
+                url: "/ajax/add",
+                data:{"x":$("#x").val(), "y":$("#y").val()},
+                dataType: "json"  // 결과를 json형식으로 가져오겠다 :: get방식이던 post방식이던 상관 No!
+            })
+            .done((res, status, erro)=>{
+                console.log(res);        //결과값 콘솔창 출력
+                $("#result").val(res.result);     //결과값 웹 결과란에 출력
+            })
+            .fail((res, status, erro)=>{
+                console.log(status);     //json은 에러가 status에요
+            })
+            //json 기본구조.
+        })
+    })
+</script>

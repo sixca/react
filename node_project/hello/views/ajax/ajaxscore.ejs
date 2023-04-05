@@ -1,0 +1,43 @@
+<!-- 성적계산기 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- jQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        이름: <input type="text" id="name" name="name"><br/>
+        국어: <input type="text" id="kor" name="kor"><br/>
+        영어: <input type="text" id="eng" name="eng"><br/>
+        수학: <input type="text" id="mat" name="mat"><br/>
+        <button type="button" id="calc">결과 확인</button><br/>
+        result : <input type="text" name="result" id="result" style="width: 300px;"><br/>
+    </form>
+</body>
+</html>
+<script>
+
+    //jQuery를 사용하여 Ajax 요청을 보내고, 서버에서 JSON 형식으로 응답을 받아와 처리하는 예제
+    $(document).ready(()=>{
+        $("#calc").click(()=>{
+            $.ajax({
+                url: "/ajax/calc",
+                data:{"name":$("#name").val(), "kor":$("#kor").val(), "eng":$("#eng").val(), "mat":$("#mat").val()},
+                dataType: "json"  // 결과를 json형식으로 가져오겠다 :: get방식이던 post방식이던 상관 No!
+            })
+            .done((res, status, erro)=>{
+                console.log(res);        //결과값 콘솔창 출력
+                $("#result").val(res.result);     //결과값 웹 결과란에 출력
+            })
+            .fail((res, status, erro)=>{
+                console.log(status);     //json은 에러가 status에요
+            })
+            //json 기본구조.
+        })
+    })
+</script>
