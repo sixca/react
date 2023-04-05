@@ -32,17 +32,16 @@ router.use('/calc', function(req, res, next){
   let eng = parseInt(req.query.eng);
   let mat = parseInt(req.query.mat);
   
-//   if(0 > kor || kor > 100 || 0 > eng || eng > 100 || 0 > mat || mat > 100 || 0 > eng || eng > 100){
-//     response.send("점수를 0~100사이 숫자로 입력하세요");
-//     return false;
-// } else {
-   total = kor + eng + mat;
-   avg = Math.round((kor + eng + mat)/3);    
-// }
+    if(0 > kor || kor > 100 || 0 > eng || eng > 100 || 0 > mat || mat > 100){
+      res.send();
+      return false;
+  } else {
+    total = kor + eng + mat;
+    avg = Math.round((kor + eng + mat)/3);    
+  }
   result = `${name}님의 총점은 ${total}점이고 평균은 ${avg}점입니다`;
-  res.json({result:result}); // typeof
+  res.json({result:result}); 
 });
-
 
 // send 함수가 적당히 알아서 데이터를 보낸다
 router.get('/result1', function(req, res, next) {
