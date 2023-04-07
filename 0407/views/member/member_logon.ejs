@@ -13,6 +13,7 @@
 <body>
   <form id="myform" name="myform">
     <input type="hidden" id="logoncheckyn" name="logoncheckyn" value="N"> 
+    <!-- 로긴 상태 N, Y 저장하는 히든 태그 -->
 
   <%-include('../layout/header.ejs')%>
 
@@ -58,7 +59,7 @@
         if(result.result == "success")
         {
           alert("로그인이 완료되었습니다")
-          $("#logoncheckyn").val("Y"); 
+          $("#logoncheckyn").val("Y"); //value:N을 value:Y로 바꿔줌. 이걸 빠트리면, alert창은 띄우지만 상태를 업데이트 할 수 없게 되어, 로긴 상태를 체크하는 기능이 없어지는 것.
         }
         else
         {

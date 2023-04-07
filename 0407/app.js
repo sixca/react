@@ -35,6 +35,7 @@ app.use( session({
   resave: false,
   saveUninitialized: false
 })); // 추가
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/board', boardRouter); // 추가
