@@ -27,10 +27,9 @@ function getPaging(pg, totalCnt, pageGroupSize=10)
 
     pgGroupStart = parseInt((pg - 1) / pageGroupSize) * pageGroupSize + 1; //소숫점 자르기 위해 parseInt사용
     pgGroupEnd = pgGroupStart+10;
-    if(pgGroupEnd = pnTotal)
+    if(pgGroupEnd >= pnTotal)
         pgGroupEnd = pnTotal +1;
     console.log(pg, pgGroupStart, pgGroupEnd);
-    //pg가 1이면 
 
     //함수는 반환값이 하나이어야 한다. JSON객체로 만들어 보내면 여러개를 동시에 보낼 수 있음.. 객체로 만들어서 보내자!
     return {pnTotal:pnTotal, pnStart:pgGroupStart, pnEnd:pgGroupEnd, pg:pg}
