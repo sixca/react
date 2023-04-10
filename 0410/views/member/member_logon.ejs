@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  
+</head>
+<body>
+  <form id="myform" name="myform">
+    <input type="hidden" id="logoncheckyn" name="logoncheckyn" value="N"> 
+    <!-- 로긴 상태 N, Y 저장하는 히든 태그 -->
+
+  <%-include('../layout/header.ejs')%>
+
+<div class="container mt-3">
+  <h1 style="margin-top: 80px;">로그온</h1>
+
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" id="userid" name="userid" placeholder="아이디">
+  </div>
+
+  <div class="input-group mb-3">
+    <input type="password" class="form-control" id="password" name="password" placeholder="패스워드">
+  </div>
+  
+  	<div class="container" style="text-align:right">
+	 
+	  <div class="btn-group">
+	    
+       <button type="button" class="btn btn-primary" id="btnLogon">로그온</button>&nbsp;&nbsp;
+      
+	    <button type="button" class="btn btn-primary" id="btnCancel">취소</button>&nbsp;&nbsp;
+	  </div>
+	</div>
+</form>	
+</div>
+
+</form>
+</body>
+</html>
+
+<script>
+// 내가 한 것
+//   $(document).ready(()=>{
+//     $('#btnLogon').click(()=>{
+//       let userid = $("#userid").val();
+//       let password = $("#password").val();
+
+//       $.ajax({
+//         url: "/member/logoncheck",
+//         data: {userid:userid, password:password},
+//         method:"post",
+//         dataType:"json"
+//       }).then((result)=>{
+//         if(result.result == "success")
+//         {
+//           alert("로그인이 완료되었습니다")
+//           $("#logoncheckyn").val("Y"); //value:N을 value:Y로 바꿔줌. 이걸 빠트리면, alert창은 띄우지만 상태를 업데이트 할 수 없게 되어, 로긴 상태를 체크하는 기능이 없어지는 것.
+//         }
+//         else
+//         {
+//           alert("아이디나 패스워드가 일치하지 않습니다");
+//         }
+//       })
+//       .catch((res, status, error)=>{
+//         console.log(status);
+//       });
+//     });         
+// });
+
+// 강사님 실습 :: DB에서 id, password를 대조해서 가져옴. 
+  $(document).ready(()=>{
+    $("#btnLogon").click( goLogon ); // goLogon() - 함수를 실행한 결과가 전달
+                                     // goLogon - 함수의 주소만 전달한다
+    $("#btnCancel").click( goCancel );
+  });
+
+ function goLogon()
+ {
+  $.ajax({
+    url: "/member/logon",
+    data:{userid:$("#userid").val(), password:$("#password").val()},
+    dataType: "json",
+    method:"post"
+  })
+  .done((res)=>{
+    console.log(res.result);
+    if(res.result=="success")
+    {
+      alert(res.msg);
+      location.href = "/"; //첫번째 페이지로
+    }
+    else
+    {
+      alert(res.msg);
+    }
+  })
+  .fail( (res, status, error)=>{
+    console.log( status )
+  })  
+ };
+ 
+ function goCancel()
+ {
+
+ }
+
+
+
+</script>
