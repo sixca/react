@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CDN -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+</head>
+<body>
+    <div id = "root"></div>
+    <script type="text/babel">  // JSX 코드를 사용하기 위해 Babel을 이용해 코드를 변환
+        // import React from 'react';   :: CDN으로 React 라이브러리를 가져왔기 때문에 해당 문구 생략
+        const {useState} = React; // import임
+
+        //함수기반컴포넌트 위치 상관없음, 클래스는 ReactDOM.render 위쪽에 있어야 적상작동
+        //클래스기반
+        class Mycomponent1 extends React.Component{
+                render(){
+                    return(
+                        <div>
+                            <h1>클래스기반</h1>
+                        </div>
+                    )
+                }
+            }
+
+        ReactDOM.render(    // React element를 DOM 요소에 렌더링 :: react에서 DOM을 조작하는 메서드를 모아둔 라이브러리
+            <div>
+                <h1>카운터</h1>
+                <Counter/>
+                <Counter/>
+                <Mycomponent1/>
+            </div>,
+            document.getElementById("root") //전체구조의 뿌리가 되는 태그
+        );
+
+        //리액트에서 컴포넌트 이름은 대문자로 시작하는 것이 관례. 
+        //컴포넌트와 일반 HTML 태그를 구분하기 위한 것.
+        //예를 들어, Counter는 컴포넌트로 인식하고 div, h1 등은 일반 HTML 태그로 인식
+
+            //함수기반
+            function Counter(){ 
+                //변수를 state라는 공간에 저장한다
+                //함수에 변수를 만들면 함수 종료 시, 변수가 다 없어짐
+                //유지를 위해서 상태정보를 state공간에 저장해야 함     
+                const[number, setNumber] = useState(0);
+                //    변수, 변수의 값을 바꾸는 함수 = useState(변수초기값)
+                const onIncrease = () => {
+                    setNumber(number + 1); //반드시 set함수에 의해서 값이 바뀌어야
+                                            //react가 화면에 랜더링작업을 진행한다
+                }
+                const onDecrease = () => {
+                    setNumber(number - 1);
+                }
+
+                return(
+                <div>
+                    <h3>{number}</h3>   
+                    <button type="button" onClick={onIncrease}>+</button> 
+                    <button type="button" onClick={onDecrease}>-</button> 
+                </div>
+                )
+            }
+
+            
+
+    </script>
+</body>
+</html>

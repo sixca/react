@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CDN -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id = "root"></div>
+    
+    <script type="text/babel">  // JSX 코드를 사용하기 위해 Babel을 이용해 코드를 변환
+        ReactDOM.render(    // React element를 DOM 요소에 렌더링 :: react에서 DOM을 조작하는 메서드를 모아둔 라이브러리
+            <div>
+                <h1>hello react</h1>
+            </div>,
+            document.getElementById("root") //전체구조의 뿌리가 되는 태그
+        );
+
+    </script>
+</body>
+</html>
